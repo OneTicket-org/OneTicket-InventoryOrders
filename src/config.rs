@@ -22,8 +22,10 @@ impl Config {
                 .map_err(|_| format!("INVENTORYORDERS_PORT is not a valid port: {raw:?}"))?,
             Err(_) => 3000,
         };
-        let database_url = std::env::var("DATABASE_URL")
-            .unwrap_or_else(|_| "postgres://INVENTORYORDERS:INVENTORYORDERS-dev-secret@localhost:5433/INVENTORYORDERS".to_string());
+        let database_url = std::env::var("DATABASE_URL").unwrap_or_else(|_| {
+            "postgres://inventoryorders:inventoryorders-dev-secret@localhost:5433/inventoryorders"
+                .to_string()
+        });
         let page_size = match std::env::var("INVENTORYORDERS_PAGE_SIZE") {
             Ok(raw) => {
                 let size = raw

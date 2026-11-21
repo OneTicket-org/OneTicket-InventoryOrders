@@ -34,4 +34,15 @@ async fn main() {
             std::process::exit(1);
         }
     };
+
+    match sqlx::query_scalar::<_, String>("SELECT version()")
+        .fetch_one(&pool)
+        .await
+    {
+        Ok(version) => tracing::info!(%version, "connected to the database"),
+        Err(e) => {
+            eprintln!("database connection check failed: {e}");
+            std::process::exit(1);
+        }
+    }
 }
