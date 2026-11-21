@@ -2,6 +2,9 @@
 name = "oneticket-inventoryorders"
 version = "0.1.0"
 edition = "2024"
+license = "LGPL-3.0"
+license-file = "LICENSE"
+publish = false
 
 [dependencies]
 axum = "0.8"
