@@ -1,0 +1,12 @@
+#!/bin/sh
+# Formats the staged Rust files with rustfmt and re-stages them before the commit.
+# Note: a file that is only partly staged is re-staged whole.
+set -e
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR -- '*.rs')
+[ -z "$staged" ] && exit 0
+
+cargo fmt --all
+echo "$staged" | while IFS= read -r file; do
+    git add -- "$file"
+done
