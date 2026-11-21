@@ -1526,12 +1526,12 @@ version = "0.1.0"
 dependencies = [
  "async-trait",
  "axum",
- "chrono",
  "dotenvy",
  "serde",
  "serde_json",
  "sqlx",
  "testcontainers-modules",
+ "time",
  "tokio",
  "tokio-stream",
  "tower",
@@ -2234,7 +2234,6 @@ dependencies = [
  "base64 0.22.1",
  "bytes",
  "cfg-if",
- "chrono",
  "crc",
  "crossbeam-queue",
  "either",
@@ -2255,6 +2254,7 @@ dependencies = [
  "sha2",
  "smallvec",
  "thiserror",
+ "time",
  "tokio",
  "tokio-stream",
  "tracing",
@@ -2310,7 +2310,6 @@ dependencies = [
  "bitflags",
  "byteorder",
  "bytes",
- "chrono",
  "crc",
  "digest",
  "dotenvy",
@@ -2325,6 +2324,7 @@ dependencies = [
  "sha2",
  "sqlx-core",
  "thiserror",
+ "time",
  "tracing",
 ]
 
@@ -2338,7 +2338,6 @@ dependencies = [
  "base64 0.22.1",
  "bitflags",
  "byteorder",
- "chrono",
  "crc",
  "dotenvy",
  "etcetera",
@@ -2360,6 +2359,7 @@ dependencies = [
  "sqlx-core",
  "stringprep",
  "thiserror",
+ "time",
  "tracing",
  "whoami",
 ]
@@ -2371,7 +2371,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "88b6b78a34ddcb1db4046d462db8f79cee811019d7297b99fca8fac5de26672e"
 dependencies = [
  "atoi",
- "chrono",
  "flume",
  "form_urlencoded",
  "futures-channel",
@@ -2385,6 +2384,7 @@ dependencies = [
  "serde",
  "sqlx-core",
  "thiserror",
+ "time",
  "tracing",
  "url",
 ]
