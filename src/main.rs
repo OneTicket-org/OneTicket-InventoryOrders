@@ -44,17 +44,4 @@ async fn main() {
         Ok(version) => tracing::info!("migrations checked, the database is at version {version}"),
         Err(e) => tracing::warn!("cannot read the version of the database: {e}"),
     }
-
-    /* match sqlx::query_scalar::<_, String>("SELECT version()")
-        .fetch_one(&pool)
-        .await
-    {
-        Ok(version) => tracing::info!(%version, "connected to the database"),
-        Err(e) => {
-            eprintln!("database connection check failed: {e}");
-            std::process::exit(1);
-        }
-    }
-
-    */
 }
