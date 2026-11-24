@@ -1,4 +1,5 @@
 mod config;
+mod store;
 
 use sqlx::postgres::PgPoolOptions;
 use std::time::Duration;
@@ -35,7 +36,16 @@ async fn main() {
         }
     };
 
-    match sqlx::query_scalar::<_, String>("SELECT version()")
+    if let Err(e) = store::migrator().run(&pool).await {
+        eprintln!("the migrations failed: {}", store::migration_failure(&e));
+        std::process::exit(1);
+    }
+    match store::schema_version(&pool).await {
+        Ok(version) => tracing::info!("migrations checked, the database is at version {version}"),
+        Err(e) => tracing::warn!("cannot read the version of the database: {e}"),
+    }
+
+    /* match sqlx::query_scalar::<_, String>("SELECT version()")
         .fetch_one(&pool)
         .await
     {
@@ -45,4 +55,6 @@ async fn main() {
             std::process::exit(1);
         }
     }
+
+    */
 }
