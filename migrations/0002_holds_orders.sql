@@ -1,5 +1,5 @@
 CREATE TABLE holds (
-    id BIGINT PRIMARY KEY DEFAULT nextval ('hold_ids'),
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
     event_id BIGINT NOT NULL,
     seat TEXT NOT NULL,
     state TEXT NOT NULL CHECK (
