@@ -9,7 +9,7 @@ CREATE TABLE holds (
     created_at TIMESTAMPTZ NOT NULL,
     customer_email TEXT,
     version BIGINT NOT NULL DEFAULT 0,
-    
+
     FOREIGN KEY (event_id, seat) REFERENCES seats (event_id, label)
 );
 
@@ -32,8 +32,9 @@ CREATE TABLE order_lines(
     order_id BIGINT NOT NULL,
     hold_id BIGINT NOT NULL,
     seat_id BIGINT NOT NULL,
-    price_cents INTEGER NOT NULL,
-    
+    amount NUMERIC(12,2) NOT NULL,
+    currency TEXT NOT NULL CHECK (currency ~ '^[A-Z]{3}$'),
+
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (seat_id) REFERENCES seats(id),
     FOREIGN KEY (hold_id) REFERENCES holds(id)
