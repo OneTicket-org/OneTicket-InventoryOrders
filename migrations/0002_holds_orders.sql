@@ -1,5 +1,3 @@
-CREATE SEQUENCE hold_ids START WITH 98213;
-
 CREATE TABLE holds (
     id BIGINT PRIMARY KEY DEFAULT nextval ('hold_ids'),
     event_id BIGINT NOT NULL,
